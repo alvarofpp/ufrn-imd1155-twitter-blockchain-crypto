@@ -1,8 +1,5 @@
-import itertools
-from .constants import *
 from typing import Dict, List
 from dotenv import dotenv_values
-from twython.api import Twython
 
 
 def get_env_variables(keys: List,
@@ -21,10 +18,3 @@ def get_env_variables(keys: List,
             raise Exception('{} cannot be None or empty'.format(key))
 
     return config
-
-
-def collect(twitter: Twython,
-            query: str):
-    cursor = twitter.cursor(twitter.search, q=query, count=100, result_type='mixed')
-    search_tweets = list(itertools.islice(cursor, NUM_TWEETS_TO_FETCH))
-    print(len(search_tweets))
