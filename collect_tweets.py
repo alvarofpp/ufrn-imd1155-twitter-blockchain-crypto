@@ -9,10 +9,10 @@ def main():
                         required=True,
                         type=str,
                         help='Query to search.')
-    parser.add_argument('-o', '--output',
-                        required=True,
+    parser.add_argument('-qt', '--quantity',
+                        default=1000,
                         type=str,
-                        help='Query to search.')
+                        help='Quantity of tweets.')
     parser.add_argument('-pk', '--public_key',
                         default=None,
                         type=str,
@@ -60,7 +60,12 @@ def main():
         config = {**missing_config, **config}
 
     twitter = Twitter(config)
-    twitter.search(query=args_dict['query'])
+    quantity = int(args_dict['quantity'])
+
+    while twitter.total_tweets < quantity:
+        search_tweets = twitter.search(query=args_dict['query'])
+        twitter.export(search_tweets)
+        twitter.total_tweets += len(search_tweets)
 
 
 if __name__ == '__main__':
