@@ -1,31 +1,17 @@
+import itertools
 from .constants import *
-from typing import Dict
+from typing import Dict, List
 from dotenv import dotenv_values
+from twython.api import Twython
 
 
-def get_env_variables(public_key: str = None,
-                      secret_key: str = None,
+def get_env_variables(keys: List,
                       env_file: str = None) -> Dict:
-    if (public_key is None and secret_key is not None) \
-            or (public_key is not None and secret_key is None):
-        raise Exception('You must declare the public and secret key together.')
-
-    if public_key and secret_key:
-        return {
-            PUBLIC_KEY: public_key,
-            SECRET_KEY: secret_key,
-        }
-
     filename = env_file if env_file else '.env'
     config = dotenv_values(filename)
 
     if not bool(config):
         raise Exception('environment variables file is empty or not exist')
-
-    keys = [
-        PUBLIC_KEY,
-        SECRET_KEY,
-    ]
 
     for key in keys:
         if key not in config.keys():
@@ -35,3 +21,10 @@ def get_env_variables(public_key: str = None,
             raise Exception('{} cannot be None or empty'.format(key))
 
     return config
+
+
+def collect(twitter: Twython,
+            query: str):
+    cursor = twitter.cursor(twitter.search, q=query, count=100, result_type='mixed')
+    search_tweets = list(itertools.islice(cursor, NUM_TWEETS_TO_FETCH))
+    print(len(search_tweets))
