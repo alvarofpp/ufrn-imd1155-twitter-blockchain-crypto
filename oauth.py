@@ -4,7 +4,7 @@ from utils.functions import get_env_variables
 
 
 def main():
-    parser = argparse.ArgumentParser(description='Get tweets from Twitter API.')
+    parser = argparse.ArgumentParser(description='Get final oauth tokens to use Twitter API.')
     parser.add_argument('-ot', '--oauth_token',
                         default=None,
                         type=str,
