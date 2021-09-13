@@ -1,10 +1,10 @@
+import time
 import itertools
-from ..constants import *
 from .decorators import rate_limit
 from typing import Dict, List
 from twython import Twython
+from twython.exceptions import TwythonRateLimitError
 import pandas as pd
-import time
 
 
 class Twitter:
@@ -26,12 +26,20 @@ class Twitter:
     @rate_limit(route='/search/tweets')
     def search(self,
                query: str) -> List:
-        # exit(0)
         cursor = self.last_cursor
         if cursor is None:
             cursor = self.twitter.cursor(self.twitter.search, q=query, count=100, result_type='mixed')
             self.last_cursor = cursor
-        return list(itertools.islice(cursor, NUM_TWEETS_TO_FETCH))
+
+        tweets = []
+
+        try:
+            for tweet in itertools.islice(cursor, 1_000_000):
+                tweets.append(tweet)
+        except TwythonRateLimitError:
+            print('{} tweets collected'.format(len(tweets)))
+
+        return tweets
 
     def export(self, tweets: List):
         data = {

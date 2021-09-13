@@ -13,6 +13,7 @@ def rate_limit(route: str):
             self = args[0]
             self._update_rate_limit()
             rate_limit_data = self._get_rate_limit(group, route)
+
             if rate_limit_data['remaining'] < 10:
                 datetime_reset = datetime.fromtimestamp(int(rate_limit_data['reset']))
                 now = datetime.now()
@@ -21,5 +22,7 @@ def rate_limit(route: str):
                 sleep(seconds)
 
             return func(*args, **kwargs)
+
         return call
+
     return wrapper
