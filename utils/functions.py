@@ -3,9 +3,8 @@ from dotenv import dotenv_values
 
 
 def get_env_variables(keys: List,
-                      env_file: str = None) -> Dict:
-    filename = env_file if env_file else '.env'
-    config = dotenv_values(filename)
+                      env_file: str) -> Dict:
+    config = dotenv_values(env_file)
 
     if not bool(config):
         raise Exception('environment variables file is empty or not exist')

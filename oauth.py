@@ -5,20 +5,8 @@ from utils.functions import get_env_variables
 
 def main():
     parser = argparse.ArgumentParser(description='Get final oauth tokens to use Twitter API.')
-    parser.add_argument('-ot', '--oauth_token',
-                        default=None,
-                        type=str,
-                        help='Oauth token.')
-    parser.add_argument('-ots', '--oauth_token_secret',
-                        default=None,
-                        type=str,
-                        help='Oauth token secret.')
-    parser.add_argument('-v', '--verifier',
-                        default=None,
-                        type=str,
-                        help='Verifier PIN.')
-    parser.add_argument('-ef', '--env_file',
-                        default=None,
+    parser.add_argument('-e', '--env_file',
+                        default='.env',
                         type=str,
                         help='Environment file with variables.')
 
