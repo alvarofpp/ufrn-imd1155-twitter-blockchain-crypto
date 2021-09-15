@@ -1,8 +1,8 @@
 # Tweets about #blockchain or #crypto
-[![Open in Streamlit](https://img.shields.io/badge/-Streamlit-262730?style=for-the-badge&labelColor=000000&logo=Streamlit&logoColor=white)](#)
-[![Medium](https://img.shields.io/badge/-Medium-03a57a?style=for-the-badge&labelColor=000000&logo=Medium&logoColor=white)](#)
+[![Open in Streamlit](https://img.shields.io/badge/-Streamlit-262730?style=for-the-badge&labelColor=000000&logo=Streamlit&logoColor=white)](https://share.streamlit.io/alvarofpp/ufrn-imd1155-twitter-blockchain-crypto/main/app.py)
+[![Medium](https://img.shields.io/badge/-Medium-03a57a?style=for-the-badge&labelColor=000000&logo=Medium&logoColor=white)](https://medium.com/@mvinnicius22/an%C3%A1lise-de-redes-em-um-nicho-de-conte%C3%BAdo-do-twitter-203e1cb4e31a)
 
-This work has as purpose to analyze tweets about #blockchain and #crypto. We use [Twython](https://github.com/ryanmcgrath/twython) for download the tweets, after that we use [Streamlit](https://streamlit.io/) to make an app, you can access the app [clicking here](#). See [this](#reproduce-this-work) section to reproduce this work.
+This work has as purpose to analyze tweets about #blockchain and #crypto. We use [Twython](https://github.com/ryanmcgrath/twython) for download the tweets, after that we use [Streamlit](https://streamlit.io/) to make an app, you can access the app [clicking here](https://share.streamlit.io/alvarofpp/ufrn-imd1155-twitter-blockchain-crypto/main/app.py). See [this](#reproduce-this-work) section to reproduce this work.
 
 Work of undergraduate course about Network Analysis (IMD1155) of Bachelor's degree in Information Technology from the Federal University of Rio Grande do Norte (UFRN), with [Ivanovitch Medeiros Dantas da Silva](https://github.com/ivanovitchm) as professor.
 
