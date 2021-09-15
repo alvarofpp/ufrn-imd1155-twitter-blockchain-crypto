@@ -1,1 +1,5 @@
-NUM_TWEETS_TO_FETCH = 1000
+LOCATION_REPLACE = {
+    'USA': 'United States',
+    'KSA': 'Kingdom of Saudi Arabia',
+    'CA': 'Canada',
+}

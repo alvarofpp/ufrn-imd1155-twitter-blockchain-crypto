@@ -17,3 +17,11 @@ def get_env_variables(keys: List,
             raise Exception('{} cannot be None or empty'.format(key))
 
     return config
+
+
+def clean_location(location: str) -> str:
+    if ', ' in location:
+        pos = location.find(', ') + 2
+        location = location[pos:]
+
+    return location
